@@ -1,24 +1,20 @@
 package mockey.dsl
 
-import mockey.BadRuleException
+
+import mockey.Utils
 
 import java.util.function.Predicate
 import java.util.regex.Pattern
 
 class RequestSpec {
 
-    private static def METHOD_AND_PATH_REGEX = Pattern.compile("\\s*(\\w+)\\s+(.+)")
-
     private String method = "GET"
     private String path
 
     void line(String methodAndPath) {
-        def m = METHOD_AND_PATH_REGEX.matcher(methodAndPath)
-        if (!m.matches()) {
-            throw new BadRuleException("Illegal line($methodAndPath)")
-        }
-        this.method = m.group(1)
-        this.path = m.group(2)
+        def parsed = Utils.parseMethodAndPath(methodAndPath)
+        this.method = parsed[0]
+        this.path = parsed[1]
     }
     void method(String name) {
         this.method = name
