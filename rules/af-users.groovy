@@ -9,20 +9,15 @@ service {
     rule {
         line "GET", "/user/joe"
         header "x-incoming", eq("hello")
-
-        status 200
+        responseBeginsHere 200
         header "x-outgoing", "hello"
-        json '{"name":"Привет"}'
-        //json {
-        //    """{"name":"Привет ${System.nanoTime()}"}"""
-        //}
+        json { """{"name":"Привет Joe ${System.nanoTime()}"}""" }
     }
 
     rule {
         line "GET", "/user/{name}"
-        header "x-incoming", "hello"
         status 200
         header "x-outgoing", "hello"
-        json '{"name":"Привет"}'
+        json '{"name":"Привет generic"}'
     }
 }

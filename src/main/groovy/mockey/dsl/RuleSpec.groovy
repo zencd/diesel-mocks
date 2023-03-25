@@ -27,6 +27,9 @@ class RuleSpec {
         def hp = new HeaderPredicate(key: name, predicate: predicate)
         rule.request.headers.add(hp)
     }
+    void responseBeginsHere(int code) {
+        status(code)
+    }
     void status(int code) {
         assert !this.responseStarted : "response declaration already started"
         rule.response.statusCode = code
