@@ -1,6 +1,6 @@
-# Mockey
+# Mocking Server
 
-DSL mocks for REST testing.
+Remotely running DSL mocks for testing REST/etc.
 
 ## Concept
 
