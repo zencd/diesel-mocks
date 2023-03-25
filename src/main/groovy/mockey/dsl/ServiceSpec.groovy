@@ -2,25 +2,22 @@ package mockey.dsl
 
 import mockey.model.ServiceModel
 
-class ServiceSpec {
+class ServiceSpec extends BaseSpec {
 
     private ServiceModel model = new ServiceModel()
 
     def rule(@DelegatesTo(RuleSpec) Closure cl) {
-        def spec = new RuleSpec()
-        def code = cl.rehydrate(spec, this, this)
-        code.resolveStrategy = Closure.DELEGATE_ONLY
-        code()
-        model.rules.add(spec.model)
-        return spec
+        return execClosure(cl, new RuleSpec()) {
+            model.rules.add(it.model)
+        }
     }
+
     @Deprecated
     def ruleOld(@DelegatesTo(RuleOldSpec) Closure cl) {
         def spec = new RuleOldSpec()
         def code = cl.rehydrate(spec, this, this)
         code.resolveStrategy = Closure.DELEGATE_ONLY
         code()
-        //rules.add(spec)
         return spec
     }
     void path(String path) {
