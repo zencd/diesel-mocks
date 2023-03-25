@@ -5,7 +5,7 @@ Remotely running DSL mocks for testing REST/etc.
 ## Concept
 
 - IDE-assisted rule editing
-- Git-managed rules
+- Git-hosted rules
 - server code and rules lives in the same git branch
 
 ## Reading
