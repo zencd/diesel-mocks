@@ -1,0 +1,4 @@
+package mockey
+
+class ResponseInfo {
+}
