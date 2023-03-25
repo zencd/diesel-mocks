@@ -9,7 +9,6 @@ class Specs {
         code.resolveStrategy = Closure.DELEGATE_ONLY
         code()
 
-        //ScriptContext.data['service'] = 'a value from spec ' + System.nanoTime()
         ScriptContext.get().addServiceSpec(spec)
 
         return spec

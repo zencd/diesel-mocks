@@ -1,17 +1,17 @@
 package mockey.dsl
 
+import mockey.model.ServiceModel
+
 class ServiceSpec {
-    private String path
-    private String name
-    private String swaggerUrl
-    private List<RuleSpec> rules = []
+
+    private ServiceModel model = new ServiceModel()
 
     def rule(@DelegatesTo(RuleSpec) Closure cl) {
         def spec = new RuleSpec()
         def code = cl.rehydrate(spec, this, this)
         code.resolveStrategy = Closure.DELEGATE_ONLY
         code()
-        rules.add(spec)
+        model.rules.add(spec.model)
         return spec
     }
     @Deprecated
@@ -24,12 +24,12 @@ class ServiceSpec {
         return spec
     }
     void path(String path) {
-        this.path = path
+        model.path = path
     }
     void name(String name) {
-        this.name = name
+        model.name = name
     }
     void swagger(String url) {
-        this.swaggerUrl = url
+        model.swaggerUrl = url
     }
 }

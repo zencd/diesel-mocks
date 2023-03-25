@@ -2,15 +2,12 @@ package mockey.web
 
 import groovy.util.logging.Slf4j
 import mockey.RequestInfo
-import mockey.dsl.RuleSpec
 import mockey.dsl.ServiceSpec
-import org.apache.commons.lang3.ArrayUtils
+import mockey.model.RuleModel
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Component
-
-import java.nio.charset.StandardCharsets
 
 @Slf4j
 @Component
@@ -21,8 +18,8 @@ class ResponseResolver {
 
     ResponseEntity resolve(RequestInfo requestInfo) {
         for (ServiceSpec aService : ruleLoader.scriptContext.services) {
-            for (RuleSpec aRule : aService.rules) {
-                ResponseEntity response = aRule.rule.getResponseIfMatched(requestInfo)
+            for (RuleModel aRule : aService.model.rules) {
+                ResponseEntity response = aRule.getResponseIfMatched(requestInfo)
                 if (response != null) {
                     return response
                 }
