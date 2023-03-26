@@ -4,7 +4,7 @@ import static mockey.dsl.Specs.service
 import static mockey.util.Predicates.*
 
 service {
-    path "/test/users"
+    path "/test1"
     name "USERS"
     swagger "http://swagger.com/users.yaml"
 

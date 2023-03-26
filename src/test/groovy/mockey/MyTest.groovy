@@ -1,23 +1,14 @@
 package mockey
 
-import mockey.runtime.RequestInfo
-import mockey.runtime.ResponseResolver
-import mockey.runtime.ScriptExecutor
+
 import org.junit.Test
-import org.springframework.http.HttpHeaders
 
-class MyTest {
+class MyTest extends TestBase {
 
-    def context = loadRules()
-    def resolver = new ResponseResolver(context)
-
-    static loadRules() {
-        return ScriptExecutor.processAll('src/test/groovy/mockey/rules4test')
-    }
-
+    @Deprecated
     @Test
-    void test_() {
-        def req = req('GET', '/test/users/users/joe')
+    void test_1() {
+        def req = req('GET', '/test1/users/joe')
         def resp = resolver.resolve(req)
         assert resp.headers['x-outgoing'] == ['hello']
         assert resp.headers['content-type'] == ['application/json']
@@ -25,7 +16,13 @@ class MyTest {
         assert new String(resp.body, 'utf-8') == '{"name":"Привет Joe"}'
     }
 
-    static RequestInfo req(String method, String path, HttpHeaders headers = null, byte[] body = null) {
-        return new RequestInfo(method: method, path: path, headers: headers, body: body)
+    @Test
+    void test_2() {
+        def req = req('GET', '/test1/users/joe')
+        def resp = resp(
+                200,
+                ['x-outgoing': 'hello', 'content-type': 'application/json'],
+                '{"name":"Привет Joe"}')
+        resolveAndVerify(req, resp)
     }
 }

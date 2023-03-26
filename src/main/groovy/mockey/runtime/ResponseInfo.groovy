@@ -1,9 +1,13 @@
 package mockey.runtime
 
+import groovy.transform.EqualsAndHashCode
+import groovy.transform.ToString
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 
+@EqualsAndHashCode
+@ToString
 class ResponseInfo {
 
     int statusCode
