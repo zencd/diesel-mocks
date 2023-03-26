@@ -82,7 +82,7 @@ class RuleSpec {
         param(name, Predicates.eq(value))
     }
     void param(String name, Predicate<String> predicate) {
-        def pp = new ParamPredicate(name: name, predicate: predicate)
+        def pp = new ParamPredicate(name, predicate)
         model.request.paramPredicates.add(pp)
     }
 }
