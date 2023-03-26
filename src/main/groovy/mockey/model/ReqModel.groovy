@@ -14,7 +14,6 @@ class ReqModel {
     String method = 'GET'
     String path
     List<ParamPredicate> paramPredicates = []
-    Predicate<String> pathPredicate
     List<HeaderPredicate> headers = []
 
     boolean matches(RequestInfo requestInfo) {

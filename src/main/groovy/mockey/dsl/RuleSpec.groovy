@@ -33,15 +33,8 @@ class RuleSpec {
         aRequestProperty()
         pathImpl(path)
     }
-    void path(Predicate<String> predicate) {
-        aRequestProperty()
-        //pathImpl(path)
-        model.request.path = null
-        model.request.pathPredicate = predicate
-    }
     private void pathImpl(String path) {
         model.request.path = path
-        model.request.pathPredicate = Predicates.eq(path)
     }
     void header(String name, String value) {
         if (responseStarted) {

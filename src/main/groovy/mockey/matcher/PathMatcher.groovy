@@ -14,15 +14,16 @@ class PathMatcher {
     boolean pathMatches() {
         def ruleModel = reqModel.ruleModel
         if (requestInfo.path.startsWith(ruleModel.serviceModel.path)) {
-            String subPath = requestInfo.path.substring(ruleModel.serviceModel.path.length())
+            String reqPathWithoutServicePrefix = requestInfo.path.substring(ruleModel.serviceModel.path.length())
             String regex = Utils.pathPatternToRegex(reqModel.path)
-            if (regex != reqModel.path) {
-                if (subPath.matches(regex)) {
+            if (regex == reqModel.path) {
+                if (reqPathWithoutServicePrefix == reqModel.path) {
                     return true
                 }
-            }
-            if (reqModel.pathPredicate) {
-                return reqModel.pathPredicate.test(subPath)
+            } else {
+                if (reqPathWithoutServicePrefix.matches(regex)) {
+                    return true
+                }
             }
         }
         return false
