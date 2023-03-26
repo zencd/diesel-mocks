@@ -56,4 +56,14 @@ class FeatureTest extends TestBase {
                 'responseHeader')
         resolveAndVerify(req, resp)
     }
+
+    //@Test
+    //void 'path'() {
+    //    def req = req('GET', '/test1/path')
+    //    def resp = resp(
+    //            200,
+    //            ANY_HEADERS,
+    //            'responseHeader')
+    //    resolveAndVerify(req, resp)
+    //}
 }

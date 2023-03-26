@@ -34,4 +34,11 @@ service {
         header "x-outgoing", "hello"
         text 'responseHeader'
     }
+
+    //rule {
+    //    method 'GET'
+    //    path '/path'
+    //    responseBeginsHere 200
+    //    text''
+    //}
 }

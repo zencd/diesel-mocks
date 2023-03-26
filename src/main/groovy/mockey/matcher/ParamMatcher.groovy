@@ -1,10 +1,12 @@
 package mockey.matcher
 
 import groovy.transform.TupleConstructor
+import groovy.transform.TypeChecked
 import mockey.model.ReqModel
 import mockey.predicate.ParamPredicate
 import mockey.runtime.RequestInfo
 
+//@TypeChecked
 @TupleConstructor(includeFields = true)
 class ParamMatcher {
 
