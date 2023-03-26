@@ -25,8 +25,18 @@ class PathTest extends TestBase {
     }
 
     @Test
-    void 'wildcard in path'() {
+    void 'wildcard in path 1'() {
         def req = req('GET', '/test2/wildcard/111')
+        def resp = resp(
+                200,
+                ANY_HEADERS,
+                'wildcard in path')
+        resolveAndVerify(req, resp)
+    }
+
+    @Test
+    void 'wildcard in path 2'() {
+        def req = req('GET', '/test2/wildcard/111/222')
         def resp = resp(
                 200,
                 ANY_HEADERS,
