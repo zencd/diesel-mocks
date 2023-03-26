@@ -19,6 +19,12 @@ service {
     }
 
     rule {
+        line "GET", "/users/{name}/sub"
+        responseBeginsHere 200
+        text "get a wildcard user sub path"
+    }
+
+    rule {
         line "GET", "/users/{name}"
         responseBeginsHere 200
         text "get a wildcard user"
