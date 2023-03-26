@@ -9,16 +9,16 @@ import org.springframework.http.ResponseEntity
 @Slf4j
 class ResponseResolver {
 
-    static ResponseEntity resolve(RequestInfo requestInfo, List<ServiceModel> services) {
+    static ResponseInfo resolve(RequestInfo requestInfo, List<ServiceModel> services) {
         for (ServiceModel aService : services) {
             for (RuleModel aRule : aService.rules) {
-                ResponseEntity response = aRule.getResponseIfMatched(requestInfo)
+                def response = aRule.getResponseIfMatched(requestInfo)
                 if (response != null) {
                     return response
                 }
             }
         }
         log.warn("No mock found for ${requestInfo}")
-        return new ResponseEntity(HttpStatus.NOT_FOUND);
+        return ResponseInfo.NOT_FOUND
     }
 }

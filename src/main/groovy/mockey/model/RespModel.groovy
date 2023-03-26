@@ -1,5 +1,6 @@
 package mockey.model
 
+import mockey.runtime.ResponseInfo
 import org.apache.commons.lang3.ArrayUtils
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
@@ -9,12 +10,19 @@ import java.nio.charset.StandardCharsets
 
 class RespModel {
     int statusCode = 200
-    Object body
     HttpHeaders headers = new HttpHeaders()
+    Object body
 
     ResponseEntity<byte[]> createResponse() {
         byte[] binary = getRespBody(body)
         return new ResponseEntity(binary, headers, statusCode);
+    }
+
+    ResponseInfo createResponse2() {
+        return new ResponseInfo(
+                statusCode: statusCode,
+                headers: headers,
+                body: getRespBody(body))
     }
 
     private static byte[] getRespBody(Object body) {

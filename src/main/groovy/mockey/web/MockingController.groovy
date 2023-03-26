@@ -39,6 +39,6 @@ class MockingController {
 
     private ResponseEntity processRequest(HttpServletRequest httpRequest, InputStream inputStream) {
         def reqInfo = RequestInfo.collect(httpRequest, inputStream)
-        return responseResolver.resolve(reqInfo)
+        return responseResolver.resolve(reqInfo).toResponseEntity()
     }
 }

@@ -1,6 +1,7 @@
 package mockey.model
 
 import mockey.runtime.RequestInfo
+import mockey.runtime.ResponseInfo
 import org.springframework.http.ResponseEntity
 
 class RuleModel {
@@ -9,9 +10,9 @@ class RuleModel {
     RespModel response = new RespModel()
     String jsonMatch
 
-    ResponseEntity getResponseIfMatched(RequestInfo requestInfo) {
+    ResponseInfo getResponseIfMatched(RequestInfo requestInfo) {
         if (request.matches(requestInfo)) {
-            return response.createResponse()
+            return response.createResponse2()
         }
         return null
     }
