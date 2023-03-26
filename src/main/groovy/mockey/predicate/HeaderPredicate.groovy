@@ -1,8 +1,8 @@
-package mockey.util
+package mockey.predicate
 
 import java.util.function.Predicate
 
 class HeaderPredicate {
-    String key
+    String name
     Predicate<String> predicate
 }

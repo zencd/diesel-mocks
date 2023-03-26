@@ -1,4 +1,4 @@
-package mockey.util
+package mockey.predicate
 
 import mockey.runtime.RequestInfo
 

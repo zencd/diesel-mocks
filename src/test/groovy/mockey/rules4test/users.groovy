@@ -1,7 +1,6 @@
 package mockey.rules4test
 
 import static mockey.dsl.Specs.service
-import static mockey.util.Predicates.*
 
 service {
     path "/test1"

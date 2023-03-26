@@ -1,5 +1,5 @@
 import static mockey.dsl.Specs.service
-import static mockey.util.Predicates.*
+import static mockey.predicate.Predicates.*
 
 service {
     path '/af/users'

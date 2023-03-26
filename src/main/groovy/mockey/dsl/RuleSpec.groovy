@@ -1,8 +1,8 @@
 package mockey.dsl
 
-import mockey.util.HeaderPredicate
-import mockey.util.ParamPredicate
-import mockey.util.Predicates
+import mockey.predicate.HeaderPredicate
+import mockey.predicate.ParamPredicate
+import mockey.predicate.Predicates
 import mockey.model.RuleModel
 
 import java.util.function.Predicate
@@ -41,13 +41,13 @@ class RuleSpec {
         if (responseStarted) {
             model.response.headers.add(name, value)
         } else {
-            def hp = new HeaderPredicate(key: name, predicate: Predicates.eq(value))
+            def hp = new HeaderPredicate(name: name, predicate: Predicates.eq(value))
             model.request.headers.add(hp)
         }
     }
     void header(String name, Predicate<String> predicate) {
         assert !this.responseStarted : "response declaration started already"
-        def hp = new HeaderPredicate(key: name, predicate: predicate)
+        def hp = new HeaderPredicate(name: name, predicate: predicate)
         model.request.headers.add(hp)
     }
     void responseBeginsHere(int code) {
