@@ -1,5 +1,6 @@
 package mockey
 
+import mockey.runtime.ResponseResolver
 import org.junit.Test
 
 class FeatureTest extends TestBase {

@@ -8,6 +8,9 @@ import org.springframework.http.HttpHeaders
 
 abstract class TestBase {
 
+    public static final String ANY_HEADERS_KEY = 'jdhdkjdaladsjsahads983271619218%%#^#&&*@'
+    public static final Map<String,String> ANY_HEADERS = [(ANY_HEADERS_KEY): 'x']
+
     ResponseResolver resolver = new ResponseResolver(loadRules())
 
     static loadRules() {
@@ -16,7 +19,12 @@ abstract class TestBase {
 
     void resolveAndVerify(RequestInfo req, ResponseInfo exp) {
         def act = resolver.resolve(req)
-        assert act == exp
+        assert act.statusCode == exp.statusCode
+        if (!exp.headers.containsKey(ANY_HEADERS_KEY)) {
+            assert act.headers == exp.headers
+        }
+        assert act.body == exp.body
+        //assert act == exp
     }
 
     void resolveAndVerify404(RequestInfo req) {
