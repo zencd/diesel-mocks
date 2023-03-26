@@ -1,6 +1,6 @@
 package mockey.dsl
 
-import mockey.load.ScriptContext
+import mockey.runtime.ScriptContext
 
 class Specs {
     static def service(@DelegatesTo(ServiceSpec) Closure cl) {
@@ -14,8 +14,3 @@ class Specs {
         return spec
     }
 }
-
-
-
-
-

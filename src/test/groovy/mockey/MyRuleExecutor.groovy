@@ -1,6 +1,6 @@
 package mockey
 
-import mockey.load.ScriptExecutor
+import mockey.runtime.ScriptExecutor
 
 def exec = new ScriptExecutor()
 exec.processAll('../../../../rules')

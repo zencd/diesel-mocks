@@ -2,7 +2,7 @@ package mockey.web
 
 import groovy.util.logging.Slf4j
 import jakarta.servlet.http.HttpServletRequest
-import mockey.util.RequestInfo
+import mockey.runtime.RequestInfo
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
@@ -17,7 +17,7 @@ class MockingController {
     private static final String MATCH_ALL = "{*path}"
 
     @Autowired
-    private ResponseResolver responseResolver
+    private ResponseResolverBean responseResolver
 
     @RequestMapping(value = MATCH_ALL, method = RequestMethod.GET)
     @ResponseBody

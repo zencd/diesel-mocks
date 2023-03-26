@@ -2,8 +2,6 @@ package mockey.dsl
 
 import mockey.model.ServiceModel
 
-import java.util.function.Predicate
-
 class ServiceSpec extends BaseSpec {
 
     private ServiceModel model = new ServiceModel()

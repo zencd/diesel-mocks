@@ -3,6 +3,7 @@ package mockey.dsl
 import org.springframework.http.HttpHeaders
 import org.springframework.util.MultiValueMap
 
+@Deprecated
 class ResponseSpec {
     private int statusCode = 200
     private Object body

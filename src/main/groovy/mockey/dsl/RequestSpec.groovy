@@ -5,6 +5,7 @@ import mockey.util.Utils
 
 import java.util.function.Predicate
 
+@Deprecated
 class RequestSpec {
 
     private String method = "GET"

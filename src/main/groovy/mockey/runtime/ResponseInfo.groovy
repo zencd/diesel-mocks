@@ -1,4 +1,4 @@
-package mockey.util
+package mockey.runtime
 
 class ResponseInfo {
 }

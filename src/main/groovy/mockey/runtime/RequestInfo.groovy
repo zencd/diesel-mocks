@@ -1,7 +1,8 @@
-package mockey.util
+package mockey.runtime
 
 import groovy.transform.ToString
 import jakarta.servlet.http.HttpServletRequest
+import mockey.util.Utils
 import org.springframework.http.HttpHeaders
 
 @ToString
@@ -20,5 +21,4 @@ class RequestInfo {
                 body: body,
         )
     }
-
 }

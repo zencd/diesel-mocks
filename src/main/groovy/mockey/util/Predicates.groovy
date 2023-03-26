@@ -28,5 +28,5 @@ class Predicates {
 
     static Predicate containsJson(String matcher) {}
 
-    static Predicate containsJson(Map matcher) {}
+    static Predicate containsJson(Map<String,Object> matcher) {}
 }

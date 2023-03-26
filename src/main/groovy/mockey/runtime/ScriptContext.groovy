@@ -1,10 +1,11 @@
-package mockey.load
+package mockey.runtime
 
 import mockey.dsl.ServiceSpec
+import mockey.model.ServiceModel
 
 class ScriptContext {
 
-    List<ServiceSpec> services = []
+    List<ServiceModel> services = []
 
     private static ThreadLocal<ScriptContext> threadLocal = ThreadLocal.withInitial {
         new ScriptContext()
@@ -19,6 +20,6 @@ class ScriptContext {
     }
 
     void addServiceSpec(ServiceSpec serviceSpec) {
-        this.services.add(serviceSpec)
+        this.services.add(serviceSpec.model)
     }
 }

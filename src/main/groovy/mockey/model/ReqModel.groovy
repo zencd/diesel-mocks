@@ -1,7 +1,7 @@
 package mockey.model
 
+import mockey.runtime.RequestInfo
 import mockey.util.HeaderPredicate
-import mockey.util.RequestInfo
 
 import java.util.function.Predicate
 
