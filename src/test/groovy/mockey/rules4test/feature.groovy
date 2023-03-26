@@ -10,7 +10,7 @@ service {
 
     rule {
         line "GET", "/jsonRespWithString"
-        responseBeginsHere 200
+        RESPONSE_BEGINS 200
         json '"jsonRespWithString"'
     }
 
@@ -30,7 +30,7 @@ service {
 
     rule {
         line "GET", "/responseHeader"
-        responseBeginsHere 200
+        RESPONSE_BEGINS 200
         header "x-outgoing", "hello"
         text 'responseHeader'
     }

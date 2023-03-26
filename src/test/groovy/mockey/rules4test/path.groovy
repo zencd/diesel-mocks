@@ -8,31 +8,31 @@ service {
 
     rule {
         line "GET", "/users"
-        responseBeginsHere 200
+        RESPONSE_BEGINS 200
         text "list users"
     }
 
     rule {
         line "GET", "/users/joe"
-        responseBeginsHere 200
+        RESPONSE_BEGINS 200
         text "exact match"
     }
 
     rule {
         line "GET", "/users/{name}/sub"
-        responseBeginsHere 200
+        RESPONSE_BEGINS 200
         text "in-path variable followed by smth else"
     }
 
     rule {
         line "GET", "/users/{name}"
-        responseBeginsHere 200
+        RESPONSE_BEGINS 200
         text "in-path variable"
     }
 
     rule {
         line "GET", "/wildcard/*"
-        responseBeginsHere 200
+        RESPONSE_BEGINS 200
         text "wildcard in path"
     }
 }

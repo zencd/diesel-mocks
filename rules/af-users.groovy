@@ -9,7 +9,7 @@ service {
     rule {
         line 'GET', '/users/joe'
         header 'x-incoming', eqi('hello')
-        responseBeginsHere 200
+        RESPONSE_BEGINS 200
         header 'x-outgoing', 'hello'
         json { """{"name":"Привет Joe ${System.nanoTime()}"}""" }
     }
