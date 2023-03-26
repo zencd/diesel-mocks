@@ -1,19 +1,15 @@
 package mockey.matcher
 
+import groovy.transform.TupleConstructor
 import mockey.model.ReqModel
 import mockey.predicate.HeaderPredicate
-import mockey.predicate.ParamPredicate
 import mockey.runtime.RequestInfo
 
+@TupleConstructor(includeFields = true)
 class HeaderMatcher {
 
     private final ReqModel reqModel
     private final RequestInfo requestInfo
-
-    HeaderMatcher(ReqModel reqModel, RequestInfo requestInfo) {
-        this.reqModel = reqModel
-        this.requestInfo = requestInfo
-    }
 
     boolean headersMatches() {
         for (def hdr : reqModel.headers) {

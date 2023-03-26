@@ -1,19 +1,14 @@
 package mockey.matcher
 
+import groovy.transform.TupleConstructor
 import mockey.model.ReqModel
-import mockey.model.RuleModel
-import mockey.predicate.HeaderPredicate
 import mockey.runtime.RequestInfo
 
+@TupleConstructor(includeFields = true)
 class PathMatcher {
 
     private final ReqModel reqModel
     private final RequestInfo requestInfo
-
-    PathMatcher(ReqModel reqModel, RequestInfo requestInfo) {
-        this.reqModel = reqModel
-        this.requestInfo = requestInfo
-    }
 
     boolean pathMatches() {
         def ruleModel = reqModel.ruleModel
