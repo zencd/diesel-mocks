@@ -25,6 +25,10 @@ class RuleSpec {
     }
     void path(String path) {
         model.request.path = path
+        model.request.pathPredicate = Predicates.eq(path)
+    }
+    void path(Predicate<String> pathPredicate) {
+        model.request.pathPredicate = pathPredicate
     }
     void header(String name, String value) {
         if (responseStarted) {

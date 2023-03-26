@@ -3,24 +3,31 @@ package mockey.model
 import mockey.HeaderPredicate
 import mockey.RequestInfo
 
+import java.util.function.Predicate
+
 class ReqModel {
     RuleModel ruleModel
     String method = 'GET'
     String path
+    Predicate<String> pathPredicate
     List<HeaderPredicate> headers = []
 
     boolean matches(RequestInfo requestInfo) {
         if (method != requestInfo.method) {
             return false
         }
-        String fullPath = ruleModel.serviceModel.path + this.path
-        if (fullPath != requestInfo.path) {
+        if (!pathMatches(requestInfo)) {
             return false
         }
         if (!allHeadersMatches(requestInfo)) {
             return false
         }
         return true
+    }
+
+    private boolean pathMatches(RequestInfo requestInfo) {
+        String fullPath = ruleModel.serviceModel.path + this.path
+        return fullPath == requestInfo.path
     }
 
     private boolean allHeadersMatches(RequestInfo requestInfo) {
