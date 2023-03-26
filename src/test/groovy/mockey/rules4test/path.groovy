@@ -15,18 +15,24 @@ service {
     rule {
         line "GET", "/users/joe"
         responseBeginsHere 200
-        text "get concrete user"
+        text "exact match"
     }
 
     rule {
         line "GET", "/users/{name}/sub"
         responseBeginsHere 200
-        text "get a wildcard user sub path"
+        text "in-path variable followed by smth else"
     }
 
     rule {
         line "GET", "/users/{name}"
         responseBeginsHere 200
-        text "get a wildcard user"
+        text "in-path variable"
+    }
+
+    rule {
+        line "GET", "/wildcard/*"
+        responseBeginsHere 200
+        text "wildcard in path"
     }
 }

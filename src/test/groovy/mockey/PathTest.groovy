@@ -5,22 +5,32 @@ import org.junit.Test
 class PathTest extends TestBase {
 
     @Test
-    void 'get concrete user'() {
+    void 'exact match'() {
         def req = req('GET', '/test2/users/joe')
         def resp = resp(
                 200,
                 ANY_HEADERS,
-                'get concrete user')
+                'exact match')
         resolveAndVerify(req, resp)
     }
 
     @Test
-    void 'get a wildcard user'() {
-        def req = req('GET', '/test2/users/wildcard')
+    void 'in-path variable'() {
+        def req = req('GET', '/test2/users/chandler')
         def resp = resp(
                 200,
                 ANY_HEADERS,
-                'get a wildcard user')
+                'in-path variable')
+        resolveAndVerify(req, resp)
+    }
+
+    @Test
+    void 'wildcard in path'() {
+        def req = req('GET', '/test2/wildcard/111')
+        def resp = resp(
+                200,
+                ANY_HEADERS,
+                'wildcard in path')
         resolveAndVerify(req, resp)
     }
 }

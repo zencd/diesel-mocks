@@ -35,7 +35,10 @@ class Utils {
 
     static pathPatternToRegex(String path) {
         // convert '/users/{name}' to '/users/.+'
+        String result = path
+        result = result.replaceAll('\\*', '.*')
         var regex = Pattern.compile("(\\{[a-zA-Z0-9]+\\})")
-        return path.replaceAll(regex, "[^/]+")
+        result = result.replaceAll(regex, "[^/]+")
+        return result
     }
 }
