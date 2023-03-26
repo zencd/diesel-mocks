@@ -7,7 +7,9 @@ service {
     swagger "http://swagger.com/users.yaml"
 
     rule {
-        line "GET", "/users/joe"
+        //line "GET", "/users/joe"
+        method "GET"
+        path "/users/joe"
         header "x-incoming", eqi("hello")
         responseBeginsHere 200
         header "x-outgoing", "hello"
@@ -15,8 +17,7 @@ service {
     }
 
     rule {
-        method "GET"
-        path "/users/{name}"
+        line "GET", "/users/{name}"
         responseBeginsHere 200
         header "x-outgoing", "hello"
         json '{"name":"Привет generic"}'

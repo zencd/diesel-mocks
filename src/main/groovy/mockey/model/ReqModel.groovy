@@ -27,6 +27,12 @@ class ReqModel {
 
     private boolean pathMatches(RequestInfo requestInfo) {
         String fullPath = ruleModel.serviceModel.path + this.path
+        if (requestInfo.path.startsWith(ruleModel.serviceModel.path)) {
+            String subPath = requestInfo.path.substring(ruleModel.serviceModel.path.length())
+            if (pathPredicate) {
+                return pathPredicate.test(subPath)
+            }
+        }
         return fullPath == requestInfo.path
     }
 

@@ -17,8 +17,8 @@ class RuleSpec {
     }
 
     void line(String method, String path) {
-        model.request.method = method
-        model.request.path = path
+        method(method)
+        path(path)
     }
     void method(String method) {
         model.request.method = method
