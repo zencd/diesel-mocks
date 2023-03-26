@@ -19,8 +19,13 @@ abstract class TestBase {
         assert act == exp
     }
 
-    static RequestInfo req(String method, String path, HttpHeaders headers = null, byte[] body = null) {
-        new RequestInfo(method: method, path: path, headers: headers, body: body)
+    void resolveAndVerify404(RequestInfo req) {
+        def act = resolver.resolve(req)
+        assert act.statusCode == 404
+    }
+
+    static RequestInfo req(String method, String path, Map<String,String> params = null, HttpHeaders headers = null, byte[] body = null) {
+        new RequestInfo(method: method, path: path, params: params, headers: headers, body: body)
     }
 
     static ResponseInfo resp(int status, Map<String,String> headers = null, def body = null) {

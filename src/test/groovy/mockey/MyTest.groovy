@@ -1,6 +1,5 @@
 package mockey
 
-
 import org.junit.Test
 
 class MyTest extends TestBase {
@@ -24,5 +23,21 @@ class MyTest extends TestBase {
                 ['x-outgoing': 'hello', 'content-type': 'application/json'],
                 '{"name":"Привет Joe"}')
         resolveAndVerify(req, resp)
+    }
+
+    @Test
+    void 'paramCheck positive'() {
+        def req = req('GET', '/test1/paramCheck', [a: 'b'])
+        def resp = resp(
+                200,
+                ['content-type': 'text/plain'],
+                'paramCheck')
+        resolveAndVerify(req, resp)
+    }
+
+    @Test
+    void 'paramCheck negative'() {
+        def req = req('GET', '/test1/paramCheck', [a: 'unexpected'])
+        resolveAndVerify404(req)
     }
 }

@@ -47,4 +47,8 @@ class RespModel {
     void setContentTypeJson() {
         headers.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
     }
+
+    void setTextPlain() {
+        headers.set(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_PLAIN_VALUE)
+    }
 }

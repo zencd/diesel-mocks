@@ -23,12 +23,9 @@ service {
     }
 
     rule {
-        line "POST", "/users"
+        line "GET", "/paramCheck"
         param "a", "b"
-        param "a", eqi("b")
-        body containsJson(ip: "1.1.1.1")
-        body contains('needle')
         RESPONSE_BEGINS 200
-        json '{"msg":"User added"}'
+        text "paramCheck"
     }
 }

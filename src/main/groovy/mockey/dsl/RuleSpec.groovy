@@ -1,6 +1,7 @@
 package mockey.dsl
 
 import mockey.util.HeaderPredicate
+import mockey.util.ParamPredicate
 import mockey.util.Predicates
 import mockey.model.RuleModel
 
@@ -60,6 +61,10 @@ class RuleSpec {
         model.response.statusCode = code
         this.responseStarted = true
     }
+    void text(String text) {
+        model.response.body = text
+        model.response.setTextPlain()
+    }
     void json(String text) {
         model.response.body = text
         model.response.setContentTypeJson()
@@ -74,7 +79,10 @@ class RuleSpec {
     //    model.jsonMatch = text
     //}
     void param(String name, String value) {
+        param(name, Predicates.eq(value))
     }
     void param(String name, Predicate<String> predicate) {
+        def pp = new ParamPredicate(name: name, predicate: predicate)
+        model.request.paramPredicates.add(pp)
     }
 }
