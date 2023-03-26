@@ -15,6 +15,7 @@ class SpringResponseResolver {
     private SpringRuleLoader ruleLoader
 
     ResponseInfo resolve(RequestInfo requestInfo) {
-        return ResponseResolver.resolve(requestInfo, ruleLoader.scriptContext.services)
+        def resolver = new ResponseResolver(ruleLoader.scriptContext)
+        return resolver.resolve(requestInfo)
     }
 }

@@ -3,8 +3,6 @@ package mockey.runtime
 import groovy.util.logging.Slf4j
 import mockey.model.RuleModel
 import mockey.model.ServiceModel
-import org.springframework.http.HttpStatus
-import org.springframework.http.ResponseEntity
 
 @Slf4j
 class ResponseResolver {
@@ -16,11 +14,7 @@ class ResponseResolver {
     }
 
     ResponseInfo resolve(RequestInfo requestInfo) {
-        resolve(requestInfo, context.services)
-    }
-
-    static ResponseInfo resolve(RequestInfo requestInfo, List<ServiceModel> services) {
-        for (ServiceModel aService : services) {
+        for (ServiceModel aService : context.services) {
             for (RuleModel aRule : aService.rules) {
                 def response = aRule.getResponseIfMatched(requestInfo)
                 if (response != null) {
