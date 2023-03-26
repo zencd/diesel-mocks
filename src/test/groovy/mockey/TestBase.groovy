@@ -6,7 +6,7 @@ import mockey.runtime.ResponseResolver
 import mockey.runtime.ScriptExecutor
 import org.springframework.http.HttpHeaders
 
-class TestBase {
+abstract class TestBase {
 
     ResponseResolver resolver = new ResponseResolver(loadRules())
 
