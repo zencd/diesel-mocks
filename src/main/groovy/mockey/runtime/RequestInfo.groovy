@@ -1,11 +1,13 @@
 package mockey.runtime
 
 import groovy.transform.ToString
+import groovy.transform.builder.Builder
 import jakarta.servlet.http.HttpServletRequest
 import mockey.util.Utils
 import org.springframework.http.HttpHeaders
 
 @ToString
+@Builder
 class RequestInfo {
     String method
     String path

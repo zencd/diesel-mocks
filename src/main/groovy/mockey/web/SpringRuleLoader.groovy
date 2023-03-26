@@ -8,7 +8,7 @@ import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
 
 @Component
-class RuleLoader {
+class SpringRuleLoader {
 
     ScriptContext scriptContext = new ScriptContext()
     //Map<String, ServiceModel>
@@ -16,7 +16,7 @@ class RuleLoader {
     @EventListener(value = ApplicationReadyEvent.class)
     void loadRules() {
         def exec = new ScriptExecutor()
-        exec.processAll('./rules')
+        exec.processDir('./rules')
         this.scriptContext = exec.context
     }
 }

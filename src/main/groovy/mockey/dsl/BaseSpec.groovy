@@ -3,7 +3,7 @@ package mockey.dsl
 import java.util.function.Consumer
 
 class BaseSpec {
-    protected <T> T execClosure(Closure cl, T spec, Consumer<T> listener) {
+    static  <T> T execClosure(Closure cl, T spec, Consumer<T> listener) {
         def code = cl.rehydrate(spec, this, this)
         code.resolveStrategy = Closure.DELEGATE_ONLY
         code()

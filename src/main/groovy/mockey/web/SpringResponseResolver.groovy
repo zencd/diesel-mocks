@@ -5,15 +5,14 @@ import mockey.runtime.RequestInfo
 import mockey.runtime.ResponseInfo
 import mockey.runtime.ResponseResolver
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Component
 
 @Slf4j
 @Component
-class ResponseResolverBean {
+class SpringResponseResolver {
 
     @Autowired
-    private RuleLoader ruleLoader
+    private SpringRuleLoader ruleLoader
 
     ResponseInfo resolve(RequestInfo requestInfo) {
         return ResponseResolver.resolve(requestInfo, ruleLoader.scriptContext.services)

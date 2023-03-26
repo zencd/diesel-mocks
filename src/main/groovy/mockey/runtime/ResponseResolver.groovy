@@ -9,6 +9,16 @@ import org.springframework.http.ResponseEntity
 @Slf4j
 class ResponseResolver {
 
+    private final ScriptContext context
+
+    ResponseResolver(ScriptContext context) {
+        this.context = context
+    }
+
+    ResponseInfo resolve(RequestInfo requestInfo) {
+        resolve(requestInfo, context.services)
+    }
+
     static ResponseInfo resolve(RequestInfo requestInfo, List<ServiceModel> services) {
         for (ServiceModel aService : services) {
             for (RuleModel aRule : aService.rules) {

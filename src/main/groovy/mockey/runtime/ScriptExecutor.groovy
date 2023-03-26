@@ -7,11 +7,18 @@ import mockey.util.Utils
 class ScriptExecutor {
     ScriptContext context = new ScriptContext()
 
-    void processAll(String ruleDirStr) {
+    static ScriptContext processAll(String ruleDirStr) {
+        def exec = new ScriptExecutor()
+        exec.processDir(ruleDirStr)
+        return exec.context
+    }
+
+    void processDir(String ruleDirStr) {
         context = new ScriptContext()
         ScriptContext.set(context)
         def ruleDir = new File(ruleDirStr).absoluteFile
         assert ruleDir.exists()
+        assert ruleDir.isDirectory()
         for (def aFile : ruleDir.listFiles()) {
             aFile = Utils.normalize(aFile)
             processFile(aFile)

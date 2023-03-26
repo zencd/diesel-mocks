@@ -17,7 +17,7 @@ class MockingController {
     private static final String MATCH_ALL = "{*path}"
 
     @Autowired
-    private ResponseResolverBean responseResolver
+    private SpringResponseResolver responseResolver
 
     @RequestMapping(value = MATCH_ALL, method = RequestMethod.GET)
     @ResponseBody
