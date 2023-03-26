@@ -3,6 +3,9 @@ package mockey.dsl
 import mockey.HeaderPredicate
 import mockey.Predicates
 import mockey.model.RuleModel
+import org.springframework.http.HttpHeaders
+import org.springframework.http.MediaType
+import org.springframework.web.bind.annotation.RequestHeader
 
 import java.util.function.Predicate
 
@@ -17,13 +20,19 @@ class RuleSpec {
     }
 
     void line(String method, String path) {
-        method(method)
-        path(path)
+        methodImpl(method)
+        pathImpl(path)
     }
     void method(String method) {
+        methodImpl(method)
+    }
+    private void methodImpl(String method) {
         model.request.method = method
     }
     void path(String path) {
+        pathImpl(path)
+    }
+    private void pathImpl(String path) {
         model.request.path = path
         model.request.pathPredicate = Predicates.eq(path)
     }
@@ -46,6 +55,9 @@ class RuleSpec {
     void responseBeginsHere(int code) {
         status(code)
     }
+    void RESPONSE_BEGINS(int code) {
+        status(code)
+    }
     void status(int code) {
         assert !this.responseStarted : "response declaration already started"
         model.response.statusCode = code
@@ -53,8 +65,15 @@ class RuleSpec {
     }
     void json(String text) {
         model.response.body = text
+        model.response.setContentTypeJson()
     }
     void json(Closure maker) {
         model.response.body = maker
+        model.response.setContentTypeJson()
+    }
+    void jsonMatch(String text) {
+        model.jsonMatch = text
+    }
+    void param(String name, String value) {
     }
 }

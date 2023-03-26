@@ -18,8 +18,16 @@ service {
 
     rule {
         line "GET", "/users/{name}"
-        responseBeginsHere 200
+        RESPONSE_BEGINS 200
         header "x-outgoing", "hello"
         json '{"name":"Привет generic"}'
+    }
+
+    rule {
+        line "POST", "/users"
+        param "a", "b"
+        jsonMatch '{"ip":"1.1.1.1"}'
+        RESPONSE_BEGINS 200
+        json '{"msg":"User added"}'
     }
 }

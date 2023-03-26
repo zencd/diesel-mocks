@@ -2,6 +2,7 @@ package mockey.model
 
 import org.apache.commons.lang3.ArrayUtils
 import org.springframework.http.HttpHeaders
+import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 
 import java.nio.charset.StandardCharsets
@@ -33,5 +34,9 @@ class RespModel {
         } else {
             return body.toString().getBytes(StandardCharsets.UTF_8)
         }
+    }
+
+    void setContentTypeJson() {
+        headers.set(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
     }
 }
