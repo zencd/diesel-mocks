@@ -18,16 +18,19 @@ class RuleSpec {
     }
 
     void line(String method, String path) {
+        aRequestProperty()
         methodImpl(method)
         pathImpl(path)
     }
     void method(String method) {
+        aRequestProperty()
         methodImpl(method)
     }
     private void methodImpl(String method) {
         model.request.method = method
     }
     void path(String path) {
+        aRequestProperty()
         pathImpl(path)
     }
     private void pathImpl(String path) {
@@ -35,6 +38,7 @@ class RuleSpec {
         model.request.pathPredicate = Predicates.eq(path)
     }
     void path(Predicate<String> pathPredicate) {
+        aRequestProperty()
         model.request.pathPredicate = pathPredicate
     }
     void header(String name, String value) {
@@ -46,7 +50,7 @@ class RuleSpec {
         }
     }
     void header(String name, Predicate<String> predicate) {
-        assert !this.responseStarted : "response declaration started already"
+        aRequestProperty()
         def hp = new HeaderPredicate(name: name, predicate: predicate)
         model.request.headers.add(hp)
     }
@@ -62,27 +66,40 @@ class RuleSpec {
         this.responseStarted = true
     }
     void text(String text) {
+        aResponseProperty()
         model.response.body = text
         model.response.setTextPlain()
     }
     void json(String text) {
+        aResponseProperty()
         model.response.body = text
         model.response.setContentTypeJson()
     }
     void json(Closure maker) {
+        aResponseProperty()
         model.response.body = maker
         model.response.setContentTypeJson()
     }
     void body(Predicate predicate) {
+        aResponseProperty()
     }
     //void jsonFilter(String text) {
     //    model.jsonMatch = text
     //}
     void param(String name, String value) {
+        aRequestProperty()
         param(name, Predicates.eq(value))
     }
     void param(String name, Predicate<String> predicate) {
+        aRequestProperty()
         def pp = new ParamPredicate(name, predicate)
         model.request.paramPredicates.add(pp)
+    }
+
+    private void aRequestProperty() {
+        assert !this.responseStarted : "response declaration already started"
+    }
+    private void aResponseProperty() {
+        assert this.responseStarted : "response declaration has not started yet"
     }
 }
