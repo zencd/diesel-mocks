@@ -14,13 +14,13 @@ class PathTest extends TestBase {
         resolveAndVerify(req, resp)
     }
 
-    //@Test
-    //void 'get a wildcard user'() {
-    //    def req = req('GET', '/test2/users/wildcard')
-    //    def resp = resp(
-    //            200,
-    //            ['content-type': 'text/plain'],
-    //            'get a wildcard user')
-    //    resolveAndVerify(req, resp)
-    //}
+    @Test
+    void 'get a wildcard user'() {
+        def req = req('GET', '/test2/users/wildcard')
+        def resp = resp(
+                200,
+                ANY_HEADERS,
+                'get a wildcard user')
+        resolveAndVerify(req, resp)
+    }
 }

@@ -7,7 +7,7 @@ import mockey.util.Utils
 import org.springframework.http.HttpHeaders
 
 @ToString
-@Builder
+//@Builder
 class RequestInfo {
     String method
     String path

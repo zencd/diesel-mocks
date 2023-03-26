@@ -8,8 +8,8 @@ import org.springframework.http.HttpHeaders
 
 abstract class TestBase {
 
-    public static final String ANY_HEADERS_KEY = 'jdhdkjdaladsjsahads983271619218%%#^#&&*@'
-    public static final Map<String,String> ANY_HEADERS = [(ANY_HEADERS_KEY): 'x']
+    private static final String ANY_HEADERS_KEY = 'jdhdkjdaladsjsahads983271619218%%#^#&&*@'
+    protected static final Map<String,String> ANY_HEADERS = [(ANY_HEADERS_KEY): 'x']
 
     ResponseResolver resolver = new ResponseResolver(loadRules())
 

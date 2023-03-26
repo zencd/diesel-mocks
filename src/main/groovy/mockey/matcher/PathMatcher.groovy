@@ -3,6 +3,7 @@ package mockey.matcher
 import groovy.transform.TupleConstructor
 import mockey.model.ReqModel
 import mockey.runtime.RequestInfo
+import mockey.util.Utils
 
 @TupleConstructor(includeFields = true)
 class PathMatcher {
@@ -12,14 +13,18 @@ class PathMatcher {
 
     boolean pathMatches() {
         def ruleModel = reqModel.ruleModel
-        String fullPath = ruleModel.serviceModel.path + reqModel.path
         if (requestInfo.path.startsWith(ruleModel.serviceModel.path)) {
             String subPath = requestInfo.path.substring(ruleModel.serviceModel.path.length())
+            String regex = Utils.pathPatternToRegex(reqModel.path)
+            if (regex != reqModel.path) {
+                if (subPath.matches(regex)) {
+                    return true
+                }
+            }
             if (reqModel.pathPredicate) {
                 return reqModel.pathPredicate.test(subPath)
             }
         }
-        return fullPath == requestInfo.path
+        return false
     }
-
 }

@@ -32,4 +32,10 @@ class Utils {
                         HttpHeaders::new
                 ));
     }
+
+    static pathPatternToRegex(String path) {
+        // convert '/users/{name}' to '/users/.+'
+        var regex = Pattern.compile("(\\{[a-zA-Z0-9]+\\})")
+        return path.replaceAll(regex, "[^/]+")
+    }
 }

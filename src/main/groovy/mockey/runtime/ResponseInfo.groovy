@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity
 
 @EqualsAndHashCode
 @ToString
-@Builder
+//@Builder
 class ResponseInfo {
 
     int statusCode
