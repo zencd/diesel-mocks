@@ -1,4 +1,4 @@
-package mockey
+package mockey.load
 
 import mockey.dsl.ServiceSpec
 

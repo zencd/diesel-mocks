@@ -1,7 +1,7 @@
 package mockey.web
 
 import groovy.util.logging.Slf4j
-import mockey.RequestInfo
+import mockey.util.RequestInfo
 import mockey.dsl.ServiceSpec
 import mockey.model.RuleModel
 import org.springframework.beans.factory.annotation.Autowired

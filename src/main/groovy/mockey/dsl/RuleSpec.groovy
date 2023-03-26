@@ -1,11 +1,8 @@
 package mockey.dsl
 
-import mockey.HeaderPredicate
-import mockey.Predicates
+import mockey.util.HeaderPredicate
+import mockey.util.Predicates
 import mockey.model.RuleModel
-import org.springframework.http.HttpHeaders
-import org.springframework.http.MediaType
-import org.springframework.web.bind.annotation.RequestHeader
 
 import java.util.function.Predicate
 
@@ -71,9 +68,13 @@ class RuleSpec {
         model.response.body = maker
         model.response.setContentTypeJson()
     }
-    void jsonMatch(String text) {
-        model.jsonMatch = text
+    void body(Predicate predicate) {
     }
+    //void jsonFilter(String text) {
+    //    model.jsonMatch = text
+    //}
     void param(String name, String value) {
+    }
+    void param(String name, Predicate<String> predicate) {
     }
 }

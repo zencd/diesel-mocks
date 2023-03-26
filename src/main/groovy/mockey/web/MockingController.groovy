@@ -2,7 +2,7 @@ package mockey.web
 
 import groovy.util.logging.Slf4j
 import jakarta.servlet.http.HttpServletRequest
-import mockey.RequestInfo
+import mockey.util.RequestInfo
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller

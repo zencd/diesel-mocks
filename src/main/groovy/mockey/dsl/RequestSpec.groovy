@@ -1,10 +1,9 @@
 package mockey.dsl
 
 
-import mockey.Utils
+import mockey.util.Utils
 
 import java.util.function.Predicate
-import java.util.regex.Pattern
 
 class RequestSpec {
 

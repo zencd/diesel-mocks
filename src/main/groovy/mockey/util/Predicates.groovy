@@ -1,4 +1,4 @@
-package mockey
+package mockey.util
 
 import java.util.function.Predicate
 
@@ -23,4 +23,10 @@ class Predicates {
     static Predicate<String> regex(String value) {}
 
     static Predicate<String> contains(String value) {}
+
+    static Predicate partialMatch(String matcher) {}
+
+    static Predicate containsJson(String matcher) {}
+
+    static Predicate containsJson(Map matcher) {}
 }

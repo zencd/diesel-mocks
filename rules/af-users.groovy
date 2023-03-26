@@ -1,5 +1,5 @@
 import static mockey.dsl.Specs.service
-import static mockey.Predicates.*
+import static mockey.util.Predicates.*
 
 service {
     path "/af/users"
@@ -26,7 +26,9 @@ service {
     rule {
         line "POST", "/users"
         param "a", "b"
-        jsonMatch '{"ip":"1.1.1.1"}'
+        param "a", eqi("b")
+        body containsJson("ip": "1.1.1.1")
+        body contains('needle')
         RESPONSE_BEGINS 200
         json '{"msg":"User added"}'
     }

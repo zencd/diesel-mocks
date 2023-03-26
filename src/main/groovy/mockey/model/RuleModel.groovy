@@ -1,6 +1,6 @@
 package mockey.model
 
-import mockey.RequestInfo
+import mockey.util.RequestInfo
 import org.springframework.http.ResponseEntity
 
 class RuleModel {

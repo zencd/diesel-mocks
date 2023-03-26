@@ -11,3 +11,4 @@ Remotely running DSL mocks for testing REST/etc.
 ## Reading
 
 - [Groovy DSL](https://docs.groovy-lang.org/docs/latest/html/documentation/core-domain-specific-languages.html)
+- [Hoverfly](https://specto.io/blog/2017/7/7/mocking-http-mockito-style/)

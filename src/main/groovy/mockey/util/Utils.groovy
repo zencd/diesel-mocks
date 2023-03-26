@@ -1,4 +1,4 @@
-package mockey
+package mockey.util
 
 import jakarta.servlet.http.HttpServletRequest
 import org.springframework.http.HttpHeaders

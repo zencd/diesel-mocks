@@ -1,4 +1,4 @@
-package mockey
+package mockey.util
 
 import java.util.function.Predicate
 

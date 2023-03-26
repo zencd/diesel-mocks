@@ -1,11 +1,8 @@
-package mockey
+package mockey.util
 
 import groovy.transform.ToString
 import jakarta.servlet.http.HttpServletRequest
 import org.springframework.http.HttpHeaders
-
-import java.util.function.Function
-import java.util.stream.Collectors
 
 @ToString
 class RequestInfo {
