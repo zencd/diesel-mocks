@@ -3,9 +3,8 @@ package mockey.model
 import mockey.HeaderPredicate
 import mockey.RequestInfo
 
-import java.util.function.Predicate
-
 class ReqModel {
+    RuleModel ruleModel
     String method = 'GET'
     String path
     List<HeaderPredicate> headers = []
@@ -14,7 +13,8 @@ class ReqModel {
         if (method != requestInfo.method) {
             return false
         }
-        if (path != requestInfo.path) {
+        String fullPath = ruleModel.serviceModel.path + this.path
+        if (fullPath != requestInfo.path) {
             return false
         }
         if (!allHeadersMatches(requestInfo)) {

@@ -7,7 +7,7 @@ class ServiceSpec extends BaseSpec {
     private ServiceModel model = new ServiceModel()
 
     def rule(@DelegatesTo(RuleSpec) Closure cl) {
-        return execClosure(cl, new RuleSpec()) {
+        return execClosure(cl, new RuleSpec(this)) {
             model.rules.add(it.model)
         }
     }

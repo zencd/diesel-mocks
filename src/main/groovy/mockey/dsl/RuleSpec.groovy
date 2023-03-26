@@ -7,11 +7,23 @@ import mockey.model.RuleModel
 import java.util.function.Predicate
 
 class RuleSpec {
+    private ServiceSpec serviceSpec
     private responseStarted = false
-    private RuleModel model = new RuleModel()
+    private RuleModel model
+
+    RuleSpec(ServiceSpec serviceSpec) {
+        this.serviceSpec = serviceSpec
+        this.model = new RuleModel(serviceModel: serviceSpec.model)
+    }
 
     void line(String method, String path) {
         model.request.method = method
+        model.request.path = path
+    }
+    void method(String method) {
+        model.request.method = method
+    }
+    void path(String path) {
         model.request.path = path
     }
     void header(String name, String value) {

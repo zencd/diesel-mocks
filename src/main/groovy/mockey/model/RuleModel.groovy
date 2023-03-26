@@ -4,7 +4,8 @@ import mockey.RequestInfo
 import org.springframework.http.ResponseEntity
 
 class RuleModel {
-    ReqModel request = new ReqModel()
+    ServiceModel serviceModel
+    ReqModel request = new ReqModel(ruleModel: this)
     RespModel response = new RespModel()
 
     ResponseEntity getResponseIfMatched(RequestInfo requestInfo) {
