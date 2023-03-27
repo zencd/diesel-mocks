@@ -3,7 +3,7 @@
 Write DSL mocks locally with the full assistance of IDE.
 Serve them remotely with ease.
 
-HTTP/REST is supported now, more to come.
+HTTP/REST supported now, more to come.
 
 ## Concept
 
