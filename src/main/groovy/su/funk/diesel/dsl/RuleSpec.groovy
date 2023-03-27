@@ -49,8 +49,8 @@ class RuleSpec {
         def hp = new HeaderPredicate(name: name, predicate: predicate)
         model.request.headers.add(hp)
     }
-    void responseBeginsHere(int code) {
-        status(code)
+    void responseBeginsHere(int statusCode) {
+        status(statusCode)
     }
     void RESPONSE_BEGINS(int code) {
         status(code)

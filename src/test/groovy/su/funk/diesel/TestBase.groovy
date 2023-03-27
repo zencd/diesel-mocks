@@ -1,6 +1,5 @@
 package su.funk.diesel
 
-
 import org.springframework.http.HttpHeaders
 import su.funk.diesel.runtime.RequestInfo
 import su.funk.diesel.runtime.ResponseInfo
@@ -25,7 +24,6 @@ abstract class TestBase {
             assert act.headers == exp.headers
         }
         assert act.body == exp.body
-        //assert act == exp
     }
 
     void resolveAndVerify404(RequestInfo req) {

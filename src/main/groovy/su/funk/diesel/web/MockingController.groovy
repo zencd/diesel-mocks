@@ -9,12 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.ResponseBody
 import su.funk.diesel.runtime.RequestInfo
+import static su.funk.diesel.util.Utils.MATCH_ALL;
 
 @Slf4j
 @Controller
 class MockingController {
-
-    private static final String MATCH_ALL = "{*path}"
 
     @Autowired
     private SpringResponseResolver responseResolver

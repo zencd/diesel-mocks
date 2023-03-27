@@ -8,7 +8,10 @@ import java.util.regex.Pattern
 import java.util.stream.Collectors
 
 class Utils {
+
     private static def METHOD_AND_PATH_REGEX = Pattern.compile("\\s*(\\w+)\\s+(.+)")
+
+    public static final String MATCH_ALL = "{*path}"
 
     static List<String> parseMethodAndPath(String methodAndPath) {
         def m = METHOD_AND_PATH_REGEX.matcher(methodAndPath)

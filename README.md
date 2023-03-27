@@ -8,6 +8,10 @@ Remotely running DSL mocks for testing REST/etc.
 - Git-hosted rules
 - server code and rules lives in the same git branch
 
+## Keep track
+
+- `./mvnw test` finds zero tests
+
 ## Reading
 
 - [Groovy DSL](https://docs.groovy-lang.org/docs/latest/html/documentation/core-domain-specific-languages.html)
