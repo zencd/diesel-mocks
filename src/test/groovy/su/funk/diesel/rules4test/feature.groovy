@@ -10,29 +10,35 @@ service {
 
     rule {
         line "GET", "/jsonRespWithString"
-        RESPONSE_BEGINS 200
+        responseBeginsHere 200
         json '"jsonRespWithString"'
     }
 
     rule {
         line "GET", "/paramCheck"
         param "a", "b"
-        RESPONSE_BEGINS 200
+        responseBeginsHere 200
         text "paramCheck"
     }
 
     rule {
         line "GET", "/paramCheckWithPredicate"
         param "a", eq("b")
-        RESPONSE_BEGINS 200
+        responseBeginsHere 200
         text "paramCheckWithPredicate"
     }
 
     rule {
         line "GET", "/responseHeader"
-        RESPONSE_BEGINS 200
+        responseBeginsHere 200
         header "x-outgoing", "hello"
         text 'responseHeader'
+    }
+
+    rule {
+        line "GET", "/statusCode500"
+        responseBeginsHere 500
+        text 'statusCode500'
     }
 
     //rule {

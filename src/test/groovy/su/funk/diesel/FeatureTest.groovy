@@ -57,6 +57,16 @@ class FeatureTest extends TestBase {
         resolveAndVerify(req, resp)
     }
 
+    @Test
+    void 'statusCode500'() {
+        def req = req('GET', '/test1/statusCode500')
+        def resp = resp(
+                500,
+                ['content-type': 'text/plain'],
+                'statusCode500')
+        resolveAndVerify(req, resp)
+    }
+
     //@Test
     //void 'path'() {
     //    def req = req('GET', '/test1/path')
