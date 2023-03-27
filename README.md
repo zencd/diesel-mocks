@@ -1,12 +1,15 @@
 # Diesel Mocks, A Server
 
-Remotely running DSL mocks for testing REST/etc.
+Write mocks locally with the full assistance of IDE.
+Serve them remotely with ease.
+HTTP/REST is supported now, more to come.
 
 ## Concept
 
 - IDE-assisted rule editing
 - Git-hosted rules
 - server code and rules lives in the same git branch
+- dynamic responses
 
 ## Keep track
 
