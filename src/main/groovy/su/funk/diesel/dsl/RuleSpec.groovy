@@ -1,5 +1,6 @@
 package su.funk.diesel.dsl
 
+import su.funk.diesel.predicate.BodyPredicate
 import su.funk.diesel.predicate.HeaderPredicate
 import su.funk.diesel.predicate.ParamPredicate
 import su.funk.diesel.predicate.Predicates
@@ -76,7 +77,9 @@ class RuleSpec {
         model.response.setContentTypeJson()
     }
     void body(Predicate predicate) {
-        aResponseProperty()
+        aRequestProperty()
+        def p = new BodyPredicate(predicate)
+        model.request.bodyPredicates.add(p)
     }
     //void jsonFilter(String text) {
     //    model.jsonMatch = text

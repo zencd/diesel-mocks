@@ -22,7 +22,13 @@ class Predicates {
 
     static Predicate<String> regex(String value) {}
 
-    static Predicate<String> contains(String value) {}
+    static Predicate<String> contains(String value) {
+        return new Predicate<String>() {
+            boolean test(String s) {
+                return s.contains(value)
+            }
+        }
+    }
 
     static Predicate partialMatch(String matcher) {}
 

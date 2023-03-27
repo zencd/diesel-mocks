@@ -41,10 +41,10 @@ service {
         text 'statusCode500'
     }
 
-    //rule {
-    //    method 'GET'
-    //    path '/path'
-    //    responseBeginsHere 200
-    //    text''
-    //}
+    rule {
+        line "POST", "/containsText"
+        body contains('"1.1.1.1"')
+        responseBeginsHere 200
+        text 'containsText'
+    }
 }

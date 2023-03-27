@@ -62,18 +62,36 @@ class FeatureTest extends TestBase {
         def req = req('GET', '/test1/statusCode500')
         def resp = resp(
                 500,
-                ['content-type': 'text/plain'],
+                ANY_HEADERS,
                 'statusCode500')
         resolveAndVerify(req, resp)
     }
 
-    //@Test
-    //void 'path'() {
-    //    def req = req('GET', '/test1/path')
-    //    def resp = resp(
-    //            200,
-    //            ANY_HEADERS,
-    //            'responseHeader')
-    //    resolveAndVerify(req, resp)
-    //}
+    @Test
+    void 'containsText, positive'() {
+        def req = req(
+                'POST',
+                '/test1/containsText',
+                null,
+                null,
+                '"1.1.1.1"'.bytes
+        )
+        def resp = resp(
+                200,
+                ANY_HEADERS,
+                'containsText')
+        resolveAndVerify(req, resp)
+    }
+
+    @Test
+    void 'containsText, negative'() {
+        def req = req(
+                'POST',
+                '/test1/containsText',
+                null,
+                null,
+                '"0.0.0.0"'.bytes
+        )
+        resolveAndVerify404(req)
+    }
 }

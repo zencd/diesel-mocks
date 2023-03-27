@@ -1,8 +1,10 @@
 package su.funk.diesel.model
 
+import su.funk.diesel.matcher.BodyMatcher
 import su.funk.diesel.matcher.HeaderMatcher
 import su.funk.diesel.matcher.ParamMatcher
 import su.funk.diesel.matcher.PathMatcher
+import su.funk.diesel.predicate.BodyPredicate
 import su.funk.diesel.predicate.ParamPredicate
 import su.funk.diesel.predicate.HeaderPredicate
 import su.funk.diesel.runtime.RequestInfo
@@ -12,6 +14,7 @@ class ReqModel {
     String method = 'GET'
     String path
     List<ParamPredicate> paramPredicates = []
+    List<BodyPredicate> bodyPredicates = []
     List<HeaderPredicate> headers = []
 
     boolean matches(RequestInfo requestInfo) {
@@ -25,6 +28,9 @@ class ReqModel {
             return false
         }
         if (!(new HeaderMatcher(this, requestInfo).headersMatches())) {
+            return false
+        }
+        if (!(new BodyMatcher(this, requestInfo).matches())) {
             return false
         }
         return true
