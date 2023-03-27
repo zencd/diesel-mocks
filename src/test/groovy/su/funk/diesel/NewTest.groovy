@@ -1,6 +1,6 @@
 package su.funk.diesel
 
-import org.junit.Ignore
+
 import org.junit.Test
 
 class NewTest extends TestBase {
@@ -19,6 +19,6 @@ class NewTest extends TestBase {
                 500,
                 ['content-type': 'text/plain'],
                 'statusCode500')
-        resolveAndVerify(req, resp)
+        verify(req, resp)
     }
 }

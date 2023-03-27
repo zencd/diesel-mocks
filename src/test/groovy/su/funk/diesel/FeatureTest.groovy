@@ -12,7 +12,7 @@ class FeatureTest extends TestBase {
                 200,
                 ['content-type': 'application/json'],
                 '"jsonRespWithString"')
-        resolveAndVerify(req, resp)
+        verify(req, resp)
     }
 
     @Test
@@ -22,13 +22,13 @@ class FeatureTest extends TestBase {
                 200,
                 ['content-type': 'text/plain'],
                 'paramCheck')
-        resolveAndVerify(req, resp)
+        verify(req, resp)
     }
 
     @Test
     void 'paramCheck negative'() {
         def req = req('GET', '/test1/paramCheck', [a: 'B'])
-        resolveAndVerify404(req)
+        verify404(req)
     }
 
     @Test
@@ -38,13 +38,13 @@ class FeatureTest extends TestBase {
                 200,
                 ['content-type': 'text/plain'],
                 'paramCheckWithPredicate')
-        resolveAndVerify(req, resp)
+        verify(req, resp)
     }
 
     @Test
     void 'paramCheckWithPredicate negative'() {
         def req = req('GET', '/test1/paramCheckWithPredicate', [a: 'B'])
-        resolveAndVerify404(req)
+        verify404(req)
     }
 
     @Test
@@ -54,7 +54,7 @@ class FeatureTest extends TestBase {
                 200,
                 ['x-outgoing': 'hello', 'content-type': 'text/plain'],
                 'responseHeader')
-        resolveAndVerify(req, resp)
+        verify(req, resp)
     }
 
     @Test
@@ -64,7 +64,7 @@ class FeatureTest extends TestBase {
                 500,
                 ANY_HEADERS,
                 'statusCode500')
-        resolveAndVerify(req, resp)
+        verify(req, resp)
     }
 
     @Test
@@ -74,13 +74,14 @@ class FeatureTest extends TestBase {
                 '/test1/containsText',
                 null,
                 null,
-                '"1.1.1.1"'.bytes
+                '"1.1.1.1"'.bytes // todo use a simpler construction
         )
         def resp = resp(
                 200,
                 ANY_HEADERS,
                 'containsText')
-        resolveAndVerify(req, resp)
+        verify(req, resp)
+        // todo add a test against binary body
     }
 
     @Test
@@ -92,6 +93,6 @@ class FeatureTest extends TestBase {
                 null,
                 '"0.0.0.0"'.bytes
         )
-        resolveAndVerify404(req)
+        verify404(req)
     }
 }

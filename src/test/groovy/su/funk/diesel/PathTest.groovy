@@ -11,7 +11,7 @@ class PathTest extends TestBase {
                 200,
                 ANY_HEADERS,
                 'exact match')
-        resolveAndVerify(req, resp)
+        verify(req, resp)
     }
 
     @Test
@@ -21,7 +21,7 @@ class PathTest extends TestBase {
                 200,
                 ANY_HEADERS,
                 'in-path variable')
-        resolveAndVerify(req, resp)
+        verify(req, resp)
     }
 
     @Test
@@ -31,7 +31,7 @@ class PathTest extends TestBase {
                 200,
                 ANY_HEADERS,
                 'wildcard in path')
-        resolveAndVerify(req, resp)
+        verify(req, resp)
     }
 
     @Test
@@ -41,6 +41,6 @@ class PathTest extends TestBase {
                 200,
                 ANY_HEADERS,
                 'wildcard in path')
-        resolveAndVerify(req, resp)
+        verify(req, resp)
     }
 }

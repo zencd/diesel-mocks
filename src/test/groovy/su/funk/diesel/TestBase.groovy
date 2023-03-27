@@ -17,7 +17,7 @@ abstract class TestBase {
         return ScriptExecutor.processAll('src/test/groovy/su/funk/diesel/rules4test')
     }
 
-    void resolveAndVerify(RequestInfo req, ResponseInfo exp) {
+    void verify(RequestInfo req, ResponseInfo exp) {
         def act = resolver.resolve(req)
         assert act.statusCode == exp.statusCode
         if (!exp.headers.containsKey(ANY_HEADERS_KEY)) {
@@ -26,7 +26,7 @@ abstract class TestBase {
         assert act.body == exp.body
     }
 
-    void resolveAndVerify404(RequestInfo req) {
+    void verify404(RequestInfo req) {
         def act = resolver.resolve(req)
         assert act.statusCode == 404
     }
