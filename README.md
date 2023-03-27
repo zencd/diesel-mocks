@@ -1,4 +1,4 @@
-# Mocking Server
+# Diesel Mocks, A Server
 
 Remotely running DSL mocks for testing REST/etc.
 

@@ -1,5 +1,5 @@
-import static mockey.dsl.Specs.service
-import static mockey.predicate.Predicates.*
+import static su.funk.diesel.dsl.Specs.service
+import static su.funk.diesel.predicate.Predicates.*
 
 service {
     path '/af/users'
