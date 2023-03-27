@@ -1,6 +1,6 @@
 # Diesel Mocks
 
-Write mocks locally with the full assistance of IDE.
+Write DSL mocks locally with the full assistance of IDE.
 Serve them remotely with ease.
 
 HTTP/REST is supported now, more to come.
