@@ -1,0 +1,2 @@
+- `./mvnw test` finds zero tests
+- generate curl request from a rule
