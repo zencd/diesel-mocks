@@ -12,6 +12,10 @@ HTTP/REST supported now, more to come.
 - server code and rules lives in the same git branch
 - dynamic responses
 
+## Example
+
+![example](screenshot.png)
+
 ## Reading
 
 - [Groovy DSL](https://docs.groovy-lang.org/docs/latest/html/documentation/core-domain-specific-languages.html)
