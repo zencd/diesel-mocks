@@ -10,7 +10,7 @@ HTTP/REST supported now, more to come.
 - IDE-assisted rule editing
 - Git-hosted rules
 - server code and rules lives in the same git branch
-- dynamic responses
+- dynamic responses supported
 
 ## Example
 

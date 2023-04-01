@@ -15,12 +15,16 @@ class ResponseResolver {
 
     ResponseInfo resolve(RequestInfo requestInfo) {
         for (ServiceModel aService : context.services) {
+            if (!requestInfo.path.startsWith(aService.path)) {
+                continue
+            }
             for (RuleModel aRule : aService.rules) {
                 def response = aRule.getResponseIfMatched(requestInfo)
                 if (response != null) {
                     return response
                 }
             }
+            // todo use openapi if no rule found
         }
         log.warn("No mock found for ${requestInfo}")
         return ResponseInfo.NOT_FOUND

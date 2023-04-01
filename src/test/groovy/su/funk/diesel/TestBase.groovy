@@ -1,10 +1,15 @@
 package su.funk.diesel
 
+import org.junit.AfterClass
+import org.junit.BeforeClass
 import org.springframework.http.HttpHeaders
+import su.funk.diesel.inject.Injection
 import su.funk.diesel.runtime.RequestInfo
 import su.funk.diesel.runtime.ResponseInfo
 import su.funk.diesel.runtime.ResponseResolver
+import su.funk.diesel.runtime.ScriptConfig
 import su.funk.diesel.runtime.ScriptExecutor
+import su.funk.diesel.util.Utils
 
 abstract class TestBase {
 
@@ -12,6 +17,18 @@ abstract class TestBase {
     protected static final Map<String,String> ANY_HEADERS = [(ANY_HEADERS_KEY): 'x']
 
     ResponseResolver resolver = new ResponseResolver(loadRules())
+
+    @BeforeClass
+    static void setupSpec() {
+        def projectRoot = Utils.normalize(new File("."))
+        def scriptConfig = new ScriptConfig(projectRoot: projectRoot)
+        Injection.INSTANCE.defineBean(scriptConfig)
+    }
+
+    @AfterClass
+    static void cleanupSpec() {
+        Injection.INSTANCE.clear()
+    }
 
     static loadRules() {
         return ScriptExecutor.processAll('src/test/groovy/su/funk/diesel/rules4test')

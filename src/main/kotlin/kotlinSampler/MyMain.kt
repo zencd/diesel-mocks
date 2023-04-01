@@ -1,17 +1,18 @@
 package kotlinSampler
 
-import io.swagger.v3.oas.models.media.Schema
+import io.swagger.v3.oas.models.Operation
 import io.swagger.v3.parser.OpenAPIV3Parser
 
 fun main() {
     println("Hello world!")
-    //val spec = OpenAPIV3Parser().read("http://swagger.g4lab.com/15.0.0-SNAPSHOT/CHAIMA/CHAIMA.yaml")
-    val spec = OpenAPIV3Parser().read("http://swagger.g4lab.com/2.10.0-SNAPSHOT/FAS/FAS.yaml")
+    val spec = OpenAPIV3Parser().read("file:///Users/pasza/projects/diesel-mocks/src/test/resources/petstore3.yaml")
     val ss = SwaggerSampler()
+    val paths = spec.paths
+    val get: Operation = paths["/pet/findByStatus"]!!.get
     val schemas = spec.components.schemas.values
-    val schema = spec.components.schemas["TokenWithContext"]!!
+    //val schema = spec.components.schemas["TokenWithContext"]!!
     //val schema = schemas.first()
-    val ok = schema is Schema
-    val res = ss.collectSchemaExample(spec, schema)
+    //val ok = schema is Schema
+    //val res = ss.collectSchemaExample(spec, schema)
     val s = 0
 }

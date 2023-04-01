@@ -10,16 +10,15 @@ import kotlinSampler.SwaggerSampler
 class SpringApp {
 
 	static void main(String[] args) {
-		//println "new Foo().foo(): ${new Foo().foo()}"
 		testKotlin()
 		SpringApplication.run(SpringApp, args)
 	}
 
-	private static OpenAPI testKotlin() {
+	private static void testKotlin() {
 		OpenAPI spec = new OpenAPIV3Parser().read("http://swagger.g4lab.com/2.10.0-SNAPSHOT/FAS/FAS.yaml")
-		def ss = new SwaggerSampler()
 		def schema = spec.components.schemas["TokenWithContext"]
-		def res = ss.collectSchemaExample(spec, schema)
+		assert schema
+		def res = new SwaggerSampler().collectSchemaExample(spec, schema)
 		def s = 0
 	}
 }

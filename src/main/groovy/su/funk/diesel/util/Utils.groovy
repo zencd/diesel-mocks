@@ -36,12 +36,17 @@ class Utils {
                 ));
     }
 
+    static var regex = Pattern.compile("(\\{[a-zA-Z0-9]+\\})")
+
     static pathPatternToRegex(String path) {
         // convert '/users/{name}' to '/users/.+'
         String result = path
         result = result.replaceAll('\\*', '.*')
-        var regex = Pattern.compile("(\\{[a-zA-Z0-9]+\\})")
         result = result.replaceAll(regex, "[^/]+")
         return result
+    }
+
+    static boolean isUrl(String url) {
+        return url.startsWith('http://') || url.startsWith('https://')
     }
 }
