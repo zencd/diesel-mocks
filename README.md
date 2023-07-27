@@ -19,8 +19,3 @@ Basically it does work but requires more testing. It's more like a concept curre
 ## Example
 
 ![example](screenshot.png)
-
-## Reading
-
-- [Groovy DSL](https://docs.groovy-lang.org/docs/latest/html/documentation/core-domain-specific-languages.html)
-- [Hoverfly](https://specto.io/blog/2017/7/7/mocking-http-mockito-style/)
