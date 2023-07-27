@@ -5,6 +5,10 @@ Serve them remotely with ease.
 
 HTTP/REST supported now, more to come.
 
+## Status
+
+Basically it does work but requires more testing.
+
 ## Concept
 
 - IDE-assisted rule editing
