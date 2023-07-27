@@ -7,7 +7,7 @@ HTTP/REST supported now, more to come.
 
 ## Status
 
-Basically it does work but requires more testing.
+Basically it does work but requires more testing. It's more like a concept currently.
 
 ## Concept
 
